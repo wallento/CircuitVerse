@@ -26,8 +26,14 @@ Devise.setup do |config|
   config.omniauth :facebook, ENV['FACEBOOK_CLIENT_ID'], ENV['FACEBOOK_CLIENT_SECRET'],  {
     :info_fields => 'email,name'
   }
-   config.omniauth :github, ENV['GITHUB_CLIENT_ID'], ENV['GITHUB_CLIENT_SECRET'], {
+  config.omniauth :github, ENV['GITHUB_CLIENT_ID'], ENV['GITHUB_CLIENT_SECRET'], {
     :scope => 'read:user'
+  }
+  config.omniauth :gitlab, ENV['GITLAB_KEY'], ENV['GITLAB_SECRET'], {
+    :scope => 'read_user',
+    client_options: {
+      site: 'https://gitlab.lrz.de/api/v4'
+    }
   }
 
   config.omniauth :microsoft_office365,ENV['MICROSOFT_CLIENT_ID'], ENV['MICROSOFT_CLIENT_SECRET']
