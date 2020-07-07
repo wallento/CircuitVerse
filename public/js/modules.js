@@ -95,10 +95,11 @@ AndGate.prototype.customDraw = function () {
     var yy = this.y;
 
     moveTo(ctx, -10, -20, xx, yy, this.direction);
-    lineTo(ctx, 0, -20, xx, yy, this.direction);
-    arc(ctx, 0, 0, 20, (-Math.PI / 2), (Math.PI / 2), xx, yy, this.direction);
+    lineTo(ctx, 20, -20, xx, yy, this.direction);
+    lineTo(ctx, 20, 20, xx, yy, this.direction);
     lineTo(ctx, -10, 20, xx, yy, this.direction);
-    lineTo(ctx, -10, -20, xx, yy, this.direction);
+
+    fillText(ctx, '&', xx, yy, 10);
     ctx.closePath();
 
     if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
