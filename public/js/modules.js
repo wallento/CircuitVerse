@@ -99,13 +99,17 @@ AndGate.prototype.customDraw = function () {
     lineTo(ctx, 20, 20, xx, yy, this.direction);
     lineTo(ctx, -10, 20, xx, yy, this.direction);
 
-    fillText(ctx, '&', xx, yy, 10);
     ctx.closePath();
 
     if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
     ctx.fill();
     ctx.stroke();
 
+    ctx.beginPath();
+    ctx.fillStyle = "black";
+    ctx.textAlign = "center";
+    fillText(ctx, '&', xx + 5, yy + 5, 14);
+    ctx.fill();
 }
 
 function NandGate(x, y, scope = globalScope, dir = "RIGHT", inputLength = 2, bitWidth = 1) {
@@ -141,7 +145,7 @@ function NandGate(x, y, scope = globalScope, dir = "RIGHT", inputLength = 2, bit
         }
     }
 
-    this.output1 = new Node(30, 0, 1, this);
+    this.output1 = new Node(27, 0, 1, this);
 
 
 }
@@ -188,20 +192,24 @@ NandGate.prototype.customDraw = function () {
     var yy = this.y;
 
     moveTo(ctx, -10, -20, xx, yy, this.direction);
-    lineTo(ctx, 0, -20, xx, yy, this.direction);
-    arc(ctx, 0, 0, 20, (-Math.PI / 2), (Math.PI / 2), xx, yy, this.direction);
+    lineTo(ctx, 20, -20, xx, yy, this.direction);
+    lineTo(ctx, 20, 20, xx, yy, this.direction);
     lineTo(ctx, -10, 20, xx, yy, this.direction);
-    lineTo(ctx, -10, -20, xx, yy, this.direction);
     ctx.closePath();
 
     if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.5)";
     ctx.fill();
     ctx.stroke();
+
     ctx.beginPath();
-    drawCircle2(ctx, 25, 0, 5, xx, yy, this.direction);
+    ctx.fillStyle = "black";
+    ctx.textAlign = "center";
+    fillText(ctx, '&', xx + 5, yy + 5, 14);
+    ctx.fill();
+
+    ctx.beginPath();
+    drawCircle2(ctx, 23, 0, 3, xx, yy, this.direction);
     ctx.stroke();
-
-
 }
 
 
@@ -344,22 +352,22 @@ function XorGate(x, y, scope = globalScope, dir = "RIGHT", inputs = 2, bitWidth 
 
     if (inputs % 2 == 1) {
         for (var i = 0; i < inputs / 2 - 1; i++) {
-            var a = new Node(-20, -10 * (i + 1), 0, this);
+            var a = new Node(-10, -10 * (i + 1), 0, this);
             this.inp.push(a);
         }
-        var a = new Node(-20, 0, 0, this);
+        var a = new Node(-10, 0, 0, this);
         this.inp.push(a);
         for (var i = inputs / 2 + 1; i < inputs; i++) {
-            var a = new Node(-20, 10 * (i + 1 - inputs / 2 - 1), 0, this);
+            var a = new Node(-10, 10 * (i + 1 - inputs / 2 - 1), 0, this);
             this.inp.push(a);
         }
     } else {
         for (var i = 0; i < inputs / 2; i++) {
-            var a = new Node(-20, -10 * (i + 1), 0, this);
+            var a = new Node(-10, -10 * (i + 1), 0, this);
             this.inp.push(a);
         }
         for (var i = inputs / 2; i < inputs; i++) {
-            var a = new Node(-20, 10 * (i + 1 - inputs / 2), 0, this);
+            var a = new Node(-10, 10 * (i + 1 - inputs / 2), 0, this);
             this.inp.push(a);
         }
     }
@@ -407,20 +415,20 @@ XorGate.prototype.customDraw = function () {
     var yy = this.y;
     ctx.beginPath();
     ctx.fillStyle = "white";
-    moveTo(ctx, -10, -20, xx, yy, this.direction, true);
-    bezierCurveTo(0, -20, +15, -10, 20, 0, xx, yy, this.direction);
-    bezierCurveTo(0 + 15, 0 + 10, 0, 0 + 20, -10, +20, xx, yy, this.direction);
-    bezierCurveTo(0, 0, 0, 0, -10, -20, xx, yy, this.direction);
-    // arc(ctx, 0, 0, -20, (-Math.PI / 2), (Math.PI / 2), xx, yy, this.direction);
+    moveTo(ctx, -10, -20, xx, yy, this.direction);
+    lineTo(ctx, 20, -20, xx, yy, this.direction);
+    lineTo(ctx, 20, 20, xx, yy, this.direction);
+    lineTo(ctx, -10, 20, xx, yy, this.direction);
     ctx.closePath();
     if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
     ctx.fill();
     ctx.stroke();
+
     ctx.beginPath();
-    arc2(ctx, -35, 0, 25, 1.70 * (Math.PI), 0.30 * (Math.PI), xx, yy, this.direction);
-    ctx.stroke();
-
-
+    ctx.fillStyle = "black";
+    ctx.textAlign = "center";
+    fillText(ctx, '=1', xx + 5, yy + 5, 14);
+    ctx.fill();
 }
 
 function XnorGate(x, y, scope = globalScope, dir = "RIGHT", inputs = 2, bitWidth = 1) {
@@ -433,26 +441,26 @@ function XnorGate(x, y, scope = globalScope, dir = "RIGHT", inputs = 2, bitWidth
 
     if (inputs % 2 == 1) {
         for (var i = 0; i < inputs / 2 - 1; i++) {
-            var a = new Node(-20, -10 * (i + 1), 0, this);
+            var a = new Node(-10, -10 * (i + 1), 0, this);
             this.inp.push(a);
         }
-        var a = new Node(-20, 0, 0, this);
+        var a = new Node(-10, 0, 0, this);
         this.inp.push(a);
         for (var i = inputs / 2 + 1; i < inputs; i++) {
-            var a = new Node(-20, 10 * (i + 1 - inputs / 2 - 1), 0, this);
+            var a = new Node(-10, 10 * (i + 1 - inputs / 2 - 1), 0, this);
             this.inp.push(a);
         }
     } else {
         for (var i = 0; i < inputs / 2; i++) {
-            var a = new Node(-20, -10 * (i + 1), 0, this);
+            var a = new Node(-10, -10 * (i + 1), 0, this);
             this.inp.push(a);
         }
         for (var i = inputs / 2; i < inputs; i++) {
-            var a = new Node(-20, 10 * (i + 1 - inputs / 2), 0, this);
+            var a = new Node(-10, 10 * (i + 1 - inputs / 2), 0, this);
             this.inp.push(a);
         }
     }
-    this.output1 = new Node(30, 0, 1, this);
+    this.output1 = new Node(27, 0, 1, this);
 
 }
 
@@ -494,22 +502,24 @@ XnorGate.prototype.customDraw = function () {
     var yy = this.y;
     ctx.beginPath();
     ctx.fillStyle = "white";
-    moveTo(ctx, -10, -20, xx, yy, this.direction, true);
-    bezierCurveTo(0, -20, +15, -10, 20, 0, xx, yy, this.direction);
-    bezierCurveTo(0 + 15, 0 + 10, 0, 0 + 20, -10, +20, xx, yy, this.direction);
-    bezierCurveTo(0, 0, 0, 0, -10, -20, xx, yy, this.direction);
-    // arc(ctx, 0, 0, -20, (-Math.PI / 2), (Math.PI / 2), xx, yy, this.direction);
+    moveTo(ctx, -10, -20, xx, yy, this.direction);
+    lineTo(ctx, 20, -20, xx, yy, this.direction);
+    lineTo(ctx, 20, 20, xx, yy, this.direction);
+    lineTo(ctx, -10, 20, xx, yy, this.direction);
     ctx.closePath();
     if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
     ctx.fill();
     ctx.stroke();
-    ctx.beginPath();
-    arc2(ctx, -35, 0, 25, 1.70 * (Math.PI), 0.30 * (Math.PI), xx, yy, this.direction);
-    ctx.stroke();
-    ctx.beginPath();
-    drawCircle2(ctx, 25, 0, 5, xx, yy, this.direction);
-    ctx.stroke();
 
+    ctx.beginPath();
+    ctx.fillStyle = "black";
+    ctx.textAlign = "center";
+    fillText(ctx, '=1', xx + 5, yy + 5, 14);
+    ctx.fill();
+
+    ctx.beginPath();
+    drawCircle2(ctx, 23, 0, 3, xx, yy, this.direction);
+    ctx.stroke();
 }
 
 
@@ -870,17 +880,22 @@ OrGate.prototype.customDraw = function () {
     ctx.beginPath();
     ctx.fillStyle = "white";
 
-    moveTo(ctx, -10, -20, xx, yy, this.direction, true);
-    bezierCurveTo(0, -20, +15, -10, 20, 0, xx, yy, this.direction);
-    bezierCurveTo(0 + 15, 0 + 10, 0, 0 + 20, -10, +20, xx, yy, this.direction);
-    bezierCurveTo(0, 0, 0, 0, -10, -20, xx, yy, this.direction);
+    moveTo(ctx, -10, -20, xx, yy, this.direction);
+    lineTo(ctx, 20, -20, xx, yy, this.direction);
+    lineTo(ctx, 20, 20, xx, yy, this.direction);
+    lineTo(ctx, -10, 20, xx, yy, this.direction);
+
     ctx.closePath();
+
     if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
     ctx.fill();
     ctx.stroke();
 
-
-
+    ctx.beginPath();
+    ctx.fillStyle = "black";
+    ctx.textAlign = "center";
+    fillText(ctx, '≥1', xx + 5, yy + 5, 14);
+    ctx.fill();
 }
 
 function Stepper(x, y, scope = globalScope, dir = "RIGHT", bitWidth = 8) {
@@ -936,7 +951,7 @@ function NotGate(x, y, scope = globalScope, dir = "RIGHT", bitWidth = 1) {
     this.setDimensions(15, 15);
 
     this.inp1 = new Node(-10, 0, 0, this);
-    this.output1 = new Node(20, 0, 1, this);
+    this.output1 = new Node(27, 0, 1, this);
 
 
 }
@@ -971,15 +986,24 @@ NotGate.prototype.customDraw = function () {
     var yy = this.y;
     ctx.beginPath();
     ctx.fillStyle = "white";
+
     moveTo(ctx, -10, -10, xx, yy, this.direction);
-    lineTo(ctx, 10, 0, xx, yy, this.direction);
+    lineTo(ctx, 20, -10, xx, yy, this.direction);
+    lineTo(ctx, 20, 10, xx, yy, this.direction);
     lineTo(ctx, -10, 10, xx, yy, this.direction);
     ctx.closePath();
     if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.8)";
     ctx.fill();
     ctx.stroke();
+
     ctx.beginPath();
-    drawCircle2(ctx, 15, 0, 5, xx, yy, this.direction);
+    ctx.fillStyle = "black";
+    ctx.textAlign = "center";
+    fillText(ctx, '1', xx + 5, yy + 5, 14);
+    ctx.fill();
+
+    ctx.beginPath();
+    drawCircle2(ctx, 23, 0, 3, xx, yy, this.direction);
     ctx.stroke();
 
 }
@@ -2347,7 +2371,7 @@ function NorGate(x, y, scope = globalScope, dir = "RIGHT", inputs = 2, bitWidth 
             this.inp.push(a);
         }
     }
-    this.output1 = new Node(30, 0, 1, this);
+    this.output1 = new Node(27, 0, 1, this);
 
 
 }
@@ -2387,18 +2411,24 @@ NorGate.prototype.customDraw = function () {
     ctx.beginPath();
     ctx.fillStyle = "white";
 
-    moveTo(ctx, -10, -20, xx, yy, this.direction, true);
-    bezierCurveTo(0, -20, +15, -10, 20, 0, xx, yy, this.direction);
-    bezierCurveTo(0 + 15, 0 + 10, 0, 0 + 20, -10, +20, xx, yy, this.direction);
-    bezierCurveTo(0, 0, 0, 0, -10, -20, xx, yy, this.direction);
+    moveTo(ctx, -10, -20, xx, yy, this.direction);
+    lineTo(ctx, 20, -20, xx, yy, this.direction);
+    lineTo(ctx, 20, 20, xx, yy, this.direction);
+    lineTo(ctx, -10, 20, xx, yy, this.direction);
     ctx.closePath();
     if ((this.hover && !simulationArea.shiftDown) || simulationArea.lastSelected == this || simulationArea.multipleObjectSelections.contains(this)) ctx.fillStyle = "rgba(255, 255, 32,0.5)";
     ctx.fill();
     ctx.stroke();
+
     ctx.beginPath();
-    drawCircle2(ctx, 25, 0, 5, xx, yy, this.direction);
+    ctx.fillStyle = "black";
+    ctx.textAlign = "center";
+    fillText(ctx, '≥1', xx + 5, yy + 5, 14);
+    ctx.fill();
+
+    ctx.beginPath();
+    drawCircle2(ctx, 23, 0, 3, xx, yy, this.direction);
     ctx.stroke();
-    //for debugging
 }
 
 function DigitalLed(x, y, scope = globalScope, color = "Red") {
