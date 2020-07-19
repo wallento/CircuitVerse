@@ -145,7 +145,7 @@ function NandGate(x, y, scope = globalScope, dir = "RIGHT", inputLength = 2, bit
         }
     }
 
-    this.output1 = new Node(27, 0, 1, this);
+    this.output1 = new Node(30, 0, 1, this);
 
 
 }
@@ -208,7 +208,7 @@ NandGate.prototype.customDraw = function () {
     ctx.fill();
 
     ctx.beginPath();
-    drawCircle2(ctx, 23, 0, 3, xx, yy, this.direction);
+    drawCircle2(ctx, 24, 0, 3, xx, yy, this.direction);
     ctx.stroke();
 }
 
@@ -460,7 +460,7 @@ function XnorGate(x, y, scope = globalScope, dir = "RIGHT", inputs = 2, bitWidth
             this.inp.push(a);
         }
     }
-    this.output1 = new Node(27, 0, 1, this);
+    this.output1 = new Node(30, 0, 1, this);
 
 }
 
@@ -518,7 +518,7 @@ XnorGate.prototype.customDraw = function () {
     ctx.fill();
 
     ctx.beginPath();
-    drawCircle2(ctx, 23, 0, 3, xx, yy, this.direction);
+    drawCircle2(ctx, 24, 0, 3, xx, yy, this.direction);
     ctx.stroke();
 }
 
@@ -951,7 +951,7 @@ function NotGate(x, y, scope = globalScope, dir = "RIGHT", bitWidth = 1) {
     this.setDimensions(15, 15);
 
     this.inp1 = new Node(-10, 0, 0, this);
-    this.output1 = new Node(27, 0, 1, this);
+    this.output1 = new Node(30, 0, 1, this);
 
 
 }
@@ -1003,7 +1003,7 @@ NotGate.prototype.customDraw = function () {
     ctx.fill();
 
     ctx.beginPath();
-    drawCircle2(ctx, 23, 0, 3, xx, yy, this.direction);
+    drawCircle2(ctx, 24, 0, 3, xx, yy, this.direction);
     ctx.stroke();
 
 }
@@ -2371,7 +2371,7 @@ function NorGate(x, y, scope = globalScope, dir = "RIGHT", inputs = 2, bitWidth 
             this.inp.push(a);
         }
     }
-    this.output1 = new Node(27, 0, 1, this);
+    this.output1 = new Node(30, 0, 1, this);
 
 
 }
@@ -2427,7 +2427,7 @@ NorGate.prototype.customDraw = function () {
     ctx.fill();
 
     ctx.beginPath();
-    drawCircle2(ctx, 23, 0, 3, xx, yy, this.direction);
+    drawCircle2(ctx, 24, 0, 3, xx, yy, this.direction);
     ctx.stroke();
 }
 
